@@ -1,39 +1,50 @@
+//update with your server name
 const serv = "ws://192.168.0.101:9969";
-var wsock, name, color, windowBlurred = false;
+
+var wsock, name, color, windowBlurred = false,
+    mssgCnt = 0;
+
 $(document).ready(function () {
     $('.modal').modal({
         dismissible: false
     });
-    $("#getName").modal("open");
+    if (window.localStorage.getItem("name") != null) {
+        startSocket(window.localStorage.getItem("name"));
+    } else {
+        $("#getName").modal("open");
+    }
 });
 
 const initChat = () => {
     var nameval = document.getElementById("nameOfPerson").value;
     if (nameval != "" && nameval != null && nameval.length > 0) {
-        name = nameval;
-
-        wsock = new WebSocket(serv);
-        wsock.onopen = socketopen;
-        wsock.onmessage = socketmessage;
-        wsock.onclose = socketclose;
-        wsock.onerror = socketerror;
-
-        document.querySelector("#messageInput")
-            .addEventListener("keypress", key => {
-                if (key.charCode === 13) {
-                    sendMssg();
-                }
-            });
-
-        setColor();
-
+        window.localStorage.setItem("name", nameval);
+        startSocket(nameval);
         $("#getName").modal("close");
     } else {
         alert("Enter Name!!!");
     }
 }
 
-const socketopen = (socInfo) => {
+const startSocket = n => {
+    console.log(n);
+    name = n;
+    wsock = new WebSocket(serv);
+    wsock.onopen = socketopen;
+    wsock.onmessage = socketmessage;
+    wsock.onclose = socketclose;
+    wsock.onerror = socketerror;
+
+    document.querySelector("#messageInput")
+        .addEventListener("keypress", key => {
+            if (key.charCode === 13) {
+                sendMssg();
+            }
+        });
+    setColor();
+}
+
+const socketopen = socInfo => {
     let message = {
         type: "adduser",
         name: name,
@@ -43,7 +54,7 @@ const socketopen = (socInfo) => {
     setTitle("Connected");
 }
 
-const socketmessage = (mssg) => {
+const socketmessage = mssg => {
     var message = JSON.parse(mssg.data);
     switch (message.type) {
         case "adduser":
@@ -65,7 +76,7 @@ const socketmessage = (mssg) => {
     }
 }
 
-const socketclose = (socInfo) => {
+const socketclose = socInfo => {
     let message = {
         type: "removeuser",
         name: name
@@ -73,7 +84,7 @@ const socketclose = (socInfo) => {
     wsock.send(JSON.stringify(message))
 }
 
-const socketerror = (socInfo) => {
+const socketerror = socInfo => {
     let message = {
         type: "removeuser",
         name: name
@@ -121,7 +132,8 @@ const addMessage = (message, user, color) => {
                             </div>`
     document.getElementById("messages").innerHTML += html;
     document.getElementById("end").scrollIntoView(true);
-    setTitle(`${user} Posted A Message`);
+    mssgCnt += 1;
+    setTitle(`You Have ${mssgCnt} Messages`);
 }
 
 const sendActiveSignal = () => {
@@ -145,17 +157,19 @@ const setColor = () => {
     }
 }
 
-const setTitle = (text) => {
+const setTitle = text => {
     if (windowBlurred) {
         document.title = text;
     }
 }
+
 window.onblur = e => {
-    console.log(e);
     windowBlurred = true;
+    mssgCnt = 0;
 }
+
 window.onfocus = e => {
-    console.log(e)
     document.title = "Chatroom";
     windowBlurred = false;
+    mssgCnt = 0;
 }
