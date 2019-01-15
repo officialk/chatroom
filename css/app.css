@@ -1,0 +1,82 @@
+ body {
+     display: flex;
+     min-height: 100vh;
+     flex-direction: column;
+     overflow: hidden;
+ }
+
+ main {
+     flex: 1 0 auto;
+ }
+
+ .scroller {
+     overflow-x: hidden;
+     overflow-y: auto;
+     max-height: 50%;
+ }
+
+ .rounded {
+     margin-left: 50px;
+     border-radius: 10px;
+     padding-bottom: 0px !important;
+     padding-top: 20px !important;
+ }
+
+ .sender {
+     color: white;
+     font-weight: bold;
+ }
+
+ .message {
+     color: white !important;
+     height: auto;
+     padding: 10px;
+     border-radius: 10px;
+     word-wrap: break-word;
+     margin-top: 15px !important;
+ }
+
+ .others {
+     margin-left: 0px;
+     margin-right: 50%;
+ }
+
+ .self {
+     margin-left: 50%;
+     text-align: right;
+ }
+
+ .cblue {
+     background: #3389ff;
+     color: white;
+ }
+
+ .cgreen {
+     background: #1cdb74;
+     color: white;
+ }
+
+ .cred {
+     background: #ff5852;
+     color: white;
+ }
+
+ .cyellow {
+     background: #bebe50;
+     color: white;
+ }
+
+ .cpink {
+     background: #d074c5;
+     color: white;
+ }
+
+ .cblack {
+     background: #4a4a4a;
+     color: white;
+ }
+
+ .cvoilet {
+     background: #af64cb;
+     color: white;
+ }
