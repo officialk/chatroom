@@ -1,3 +1,6 @@
+const socket = require("socket.io");
+
+
 const WebSocketServer = require("ws").Server;
 const webSocket = new WebSocketServer({
     port: 9969
