@@ -1,15 +1,14 @@
 {
-  "name": "ChatRoom",
-  "version": "1.1.1",
-  "description": "this is a Chat Room App",
-  "main": "server.js",
-  "dependencies": {
-    "express": "^4.16.4",
-    "socket.io": "^2.2.0"
-  },
-  "scripts": {
-    "start": "node server.js"
-  },
-  "author": "Karthik Koppaka",
-  "license": "ISC"
+    "name": "ChatRoom",
+    "version": "1.1.1",
+    "description": "this is a Chat Room App",
+    "main": "server.js",
+    "dependencies": {
+        "socket.io": "*"
+    },
+    "scripts": {
+        "start": "node server.js"
+    },
+    "author": "Karthik Koppaka",
+    "license": "ISC"
 }
