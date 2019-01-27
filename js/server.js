@@ -1,3 +1,21 @@
-const io = require('socket.io')(8000);
+const socket = require('socket.io')(8000);
 
-io.on("connection",)
+var messages = [],
+    users = [];
+
+socket.on("connection", client => {
+    console.log("Client Connected");
+    client.on("message", data => {
+
+    });
+    client.on("addUser", data => {
+
+    });
+    client.on("typing", data => {
+
+    });
+    client.on("close", data => {
+
+    });
+});
+console.log("Started Server");
