@@ -53,7 +53,7 @@
             </div>
             <div class="row container">
                 <div class="container col s12 m12 l12 center">
-                    <div class="input-field col s12 m12 l11 rounded mainColor">
+                    <div class="input-field col s10 m10 l10 rounded mainColor">
                         <i class="material-icons prefix">chat</i>
                         <input id="messageInput" type="text" placeholder="Send A Message..." onkeypress="if(this.value.length==5){startTyping()}">
                         <label for="messageInput"></label>
@@ -63,6 +63,11 @@
                             <i class="material-icons">face</i>
                         </a>
                     </div>
+                    <div class="col s2 m2 l1 input-field">
+                        <a class="btn-floating btn-large mainColor modal-trigger" href="#Docs" title="UPLOAD DOCS">
+                            <i class="material-icons">attach_file</i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -70,6 +75,81 @@
             <div class="modal-content container">
                 <div class="row" id="emojisDisplay" style="word-wrap: break-word;word-break: break-all;">
 
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="Docs">
+            <div class="modal-content row">
+                <div class="col s12 m12 l12">
+                    <ul class="tabs mainColor">
+                        <li class="tab col s3 m3 l3"><a class="white-text active" onclick="docType='image';" href="#image">Image</a></li>
+                        <li class="tab col s3 m3 l3"><a class="white-text" onclick="docType='audio';" href="#audio">Audio</a></li>
+                        <li class="tab col s3 m3 l3"><a class="white-text" onclick="docType='video';" href="#video">Video</a></li>
+                        <li class="tab col s3 m3 l3"><a class="white-text" onclick="docType='document';" href="#document">Document</a></li>
+                    </ul>
+                </div>
+                <div class="col s12 m12 l12">
+                    <div class="container center">
+                        <div id="image">
+                            <br>
+                            <h4>IMAGE</h4>
+                            <div class="col s12 m6 l6 input-field">
+                                <input type="text" id="imagelink" placeholder="Insert Using Link" onfocus="docLocation='link';">
+                                <label for="imagelink">Insert Using Link</label>
+                            </div>
+                            <div class="col s12 m1 l1">
+                                <B>OR</B>
+                            </div>
+                            <div class="col s12 m5 l5 input-field">
+                                <input type="file" id="imagelocal" placeholder="Upload Image" onfocus="docLocation='local';" accept="image/*">
+                            </div>
+                        </div>
+                        <div id="audio">
+                            <br>
+                            <h4>AUDIO</h4>
+                            <div class="col s12 m6 l6 input-field">
+                                <input type="text" id="audiolink" placeholder="Insert Using Link" onfocus="docLocation='link';">
+                                <label for="audiolink">Insert Using Link</label>
+                            </div>
+                            <div class="col s12 m1 l1">
+                                <B>OR</B>
+                            </div>
+                            <div class="col s12 m5 l5 input-field">
+                                <input type="file" id="audiolocal" placeholder="Upload audio" onfocus="docLocation='local';" accept="audio/*">
+                            </div>
+                        </div>
+                        <div id="video">
+                            <br>
+                            <h4>VIDEO</h4>
+                            <div class="col s12 m6 l6 input-field">
+                                <input type="text" id="videolink" placeholder="Insert Using Link" onfocus="docLocation='link';">
+                                <label for="videolink">Insert Using Link</label>
+                            </div>
+                            <div class="col s12 m1 l1">
+                                <B>OR</B>
+                            </div>
+                            <div class="col s12 m5 l5 input-field">
+                                <input type="file" id="videolocal" placeholder="Upload video" onfocus="docLocation='local';" accept="video/*">
+                            </div>
+                        </div>
+                        <div id="document">
+                            <br>
+                            <h4>DOCUMENT</h4>
+                            <div class="col s12 m6 l6 input-field">
+                                <input type="text" id="documentlink" placeholder="Insert Using Link" onfocus="docLocation='link';">
+                                <label for="documentlink">Insert Using Link</label>
+                            </div>
+                            <div class="col s12 m1 l1">
+                                <B>OR</B>
+                            </div>
+                            <div class="col s12 m5 l5 input-field">
+                                <input type="file" id="documentlocal" placeholder="Upload Document" onfocus="docLocation='local';">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m12 l12 center">
+                        <div class="btn mainColor" onclick="sendDocument();">Send</div>
+                    </div>
                 </div>
             </div>
         </div>

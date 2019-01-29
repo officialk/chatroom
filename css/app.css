@@ -1,4 +1,5 @@
 #chatScreen {
+    max-height: 80%;
     height: 80%;
 }
 
@@ -102,6 +103,10 @@ main {
         width: 75% !important;
         margin-left: 25% !important;
     }
+
+    .scroller {
+        max-height: 70%;
+    }
 }
 
 @media only screen and (max-width: 600px) {
@@ -113,5 +118,9 @@ main {
     .self {
         width: 100% !important;
         margin-left: 0% !important;
+    }
+
+    .scroller {
+        max-height: 70%;
     }
 }
