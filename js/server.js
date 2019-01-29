@@ -20,7 +20,6 @@ socket.on("connection", client => {
         users.push(data);
     });
     client.on("typing", data => {
-        console.log(data);
         client.broadcast.emit("typing", data);
     });
     client.on("message", data => {

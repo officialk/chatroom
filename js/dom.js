@@ -58,14 +58,12 @@ const removeUser = user => {
 }
 
 const startTyping = () => {
-    console.log("hi");
     emit("typing", {
         "name": userName
     });
 }
 
 const userTyping = user => {
-    console.log(user);
     document.getElementById(user.id).innerHTML = `<i class='material-icons'>more_horiz</i>`;
 }
 //self functions
