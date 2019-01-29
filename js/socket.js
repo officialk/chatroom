@@ -30,19 +30,25 @@ const initChat = name => {
 }
 
 const startEvents = () => {
-    
-    socket.on("userJoined", user => {
-        addUser(user);
-    });
-    socket.on("typing", user => {
-        userTyping(user);
-    });
-    socket.on("message", mssg => {
-        addMessage(mssg, "others");
-    });
-    socket.on("userLeft", user => {
-        removeUser(user);
-    });
+    socket.on("rejected", status => {
+        if (status) {
+            alert("You Already Have An Opened Window!!!!");
+            window.open("error.html", "_self").close();
+        } else {
+            socket.on("userJoined", user => {
+                addUser(user);
+            });
+            socket.on("typing", user => {
+                userTyping(user);
+            });
+            socket.on("message", mssg => {
+                addMessage(mssg, "others");
+            });
+            socket.on("userLeft", user => {
+                removeUser(user);
+            });
+        }
+    })
 }
 
 const emit = (type, data) => {
