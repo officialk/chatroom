@@ -18,6 +18,7 @@ const initChat = name => {
                     "color": currentColor
                 };
                 addUser(user);
+                window.localStorage.setItem("color", currentColor);
                 emit("addUser", user);
                 $("#getName").modal("close");
             } else {

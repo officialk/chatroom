@@ -48,7 +48,7 @@ const addMessage = (message, sender) => {
 }
 
 const addUser = user => {
-    document.getElementById("peopleInChat").innerHTML += (`<div class='btn-floating center user ${user.color}' id='${user.id}' title='${user.id}'>${user.name[0].toUpperCase()}</div>`);
+    document.getElementById("peopleInChat").innerHTML += (`<div class='btn-floating center user ${user.color}' id='${user.id}' title='${user.name}'>${user.name[0].toUpperCase()}</div>`);
 }
 
 const removeUser = user => {
@@ -87,7 +87,6 @@ const setColor = () => {
         elems[i].className += " " + color;
     }
     currentColor = color;
-    window.localStorage.setItem("color", currentColor);
 }
 
 const setTitle = text => {
