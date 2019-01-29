@@ -3,6 +3,7 @@
 <head>
     <!--   style files-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
     <link rel="icon" href="favicon.ico">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
@@ -36,25 +37,39 @@
             </div>
         </div>
         <br>
-        <div class="row container">
-            <div class="card">
-                <div class="card-action mainColor">
-                    <div id="peopleInChat">
+        <div id="chatScreen">
+            <div class="row container">
+                <div class="card">
+                    <div class="card-action mainColor">
+                        <div id="peopleInChat">
+                        </div>
+                    </div>
+                    <div class="card-content scroller" id="contentDiv">
+                        <div id="messages">
+                        </div>
+                        <div id="end"></div>
                     </div>
                 </div>
-                <div class="card-content scroller" id="contentDiv">
-                    <div id="messages">
+            </div>
+            <div class="row container">
+                <div class="container col s12 m12 l12 center">
+                    <div class="input-field col s12 m12 l11 rounded mainColor">
+                        <i class="material-icons prefix">chat</i>
+                        <input id="messageInput" type="text" placeholder="Send A Message..." onkeypress="if(this.value.length==5){startTyping()}">
+                        <label for="messageInput"></label>
                     </div>
-                    <div id="end"></div>
+                    <div class="hide-on-med-and-down col l1 input-field">
+                        <a class="btn-floating btn-large mainColor modal-trigger" href="#EMOJIS" title="EMOJIS" onclick="setChatSize(65);">
+                            <i class="material-icons">face</i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="row container">
-            <div class="container col s12 m12 l12 center">
-                <div class="input-field col s12 m12 l12 rounded mainColor">
-                    <i class="material-icons prefix">chat</i>
-                    <input id="messageInput" type="text" placeholder="Send A Message..." onkeypress="if(this.value.length==5){startTyping()}">
-                    <label for="messageInput"></label>
+        <div id="EMOJIS" class="modal bottom-sheet" style="height: 25%;">
+            <div class="modal-content container">
+                <div class="row" id="emojisDisplay" style="word-wrap: break-word;word-break: break-all;">
+
                 </div>
             </div>
         </div>

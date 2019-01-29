@@ -1,8 +1,10 @@
 var windowBlurred, currentColor, userName, MESSAGE_TYPE = "text",
-    messageCount = 0,missedMssgCnt=1;
+    messageCount = 0,
+    missedMssgCnt = 1;
 //onload
 window.onload = () => {
-    $('.modal').modal({
+    $('.carousel').carousel();
+    $('#getName').modal({
         dismissible: false
     });
     setColor();
@@ -11,12 +13,23 @@ window.onload = () => {
     } else {
         $("#getName").modal("open");
     }
+    if (window.innerWidth >= 1000) {
+        $('#EMOJIS').modal({
+            dismissible: true,
+            opacity: 0,
+            complete: () => {
+                setChatSize(85);
+            }
+        });
+        fillEmojis();
+    }
 }
 
 const initDomEvents = () => {
     document.getElementById("messageInput").addEventListener("keypress", key => {
         if (key.keyCode == 13) {
             sendMessage();
+            setChatSize(85);
         }
     });
 }
@@ -49,7 +62,7 @@ const addMessage = (message, sender) => {
     document.getElementById("end").scrollIntoView(true);
     document.getElementById(message.id).innerHTML = message.sender[0].toUpperCase();
     if (windowBlurred) {
-        setTitle("Messages Missed:".concat(missedMssgCnt+1));
+        setTitle("Messages Missed:".concat(missedMssgCnt + 1));
         ping();
     }
 }
@@ -80,6 +93,25 @@ const startTyping = () => {
 
 const userTyping = user => {
     document.getElementById(user.id).innerHTML = `<i class='material-icons'>more_horiz</i>`;
+}
+
+const setChatSize = perc => {
+    document.getElementById("chatScreen").style.height = perc + "%";
+}
+
+const fillEmojis = () => {
+    let arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c'];
+    let html = "";
+    arr.forEach(fir => {
+        arr.forEach(sec => {
+            html += `<h4 class="btn-floating small btn-flat black center emoji" onclick='selectEmoji("&#x1F6${fir}${sec}")'>&#x1F6${fir}${sec}</h4>`;
+        })
+    })
+    document.getElementById("emojisDisplay").innerHTML = html;
+}
+
+const selectEmoji = emoji => {
+    document.getElementById("messageInput").value += emoji;
 }
 //self functions
 

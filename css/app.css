@@ -1,3 +1,7 @@
+#chatScreen {
+    height: 80%;
+}
+
 body {
     display: flex;
     min-height: 100vh;
