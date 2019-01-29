@@ -1,5 +1,5 @@
 //initializing stuff
-const link = "http://192.168.2.8:8000";
+const link = "http://192.168.43.237:8000";
 var socket, id;
 
 //start chat only if name is given
@@ -33,9 +33,10 @@ const startEvents = () => {
     socket.on("userJoined", user => {
         addUser(user);
     });
-    //    socket.on("typing", user => {
-    //        userTyping(user);
-    //    });
+    socket.on("typing", user => {
+        console.log(user);
+        userTyping(user);
+    });
     socket.on("message", mssg => {
         addMessage(mssg, "others");
     });

@@ -19,9 +19,10 @@ socket.on("connection", client => {
         client.broadcast.emit("userJoined", data);
         users.push(data);
     });
-    //    client.on("typing", data => {
-    //        client.broadcast.emit("typing", data);
-    //    });
+    client.on("typing", data => {
+        console.log(data);
+        client.broadcast.emit("typing", data);
+    });
     client.on("message", data => {
         messages.push(data);
         client.broadcast.emit("message", data);

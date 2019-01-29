@@ -44,10 +44,11 @@ const addMessage = (message, sender) => {
         </div`
     );
     document.getElementById("end").scrollIntoView(true);
+    document.getElementById(message.id).innerHTML = message.sender[0].toUpperCase();
 }
 
 const addUser = user => {
-    document.getElementById("peopleInChat").innerHTML += (`<div class='btn-floating center ${user.color}' id='${user.id}' title='${user.id}'><b>${user.name[0].toUpperCase()}</b></div>`);
+    document.getElementById("peopleInChat").innerHTML += (`<div class='btn-floating center user ${user.color}' id='${user.id}' title='${user.id}'>${user.name[0].toUpperCase()}</div>`);
 }
 
 const removeUser = user => {
@@ -56,6 +57,17 @@ const removeUser = user => {
     )
 }
 
+const startTyping = () => {
+    console.log("hi");
+    emit("typing", {
+        "name": userName
+    });
+}
+
+const userTyping = user => {
+    console.log(user);
+    document.getElementById(user.id).innerHTML = `<i class='material-icons'>more_horiz</i>`;
+}
 //self functions
 
 const setName = name => {
