@@ -83,3 +83,27 @@
      background: #af64cb;
      color: white;
  }
+
+ @media only screen and (max-width: 786px) {
+
+     .others {
+         width: 75% !important;
+     }
+
+     .self {
+         width: 75% !important;
+         margin-left: 25% !important;
+     }
+ }
+
+ @media only screen and (max-width: 600px) {
+
+     .others {
+         width: 100% !important;
+     }
+
+     .self {
+         width: 100% !important;
+         margin-left: 0% !important;
+     }
+ }
