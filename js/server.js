@@ -28,12 +28,13 @@ socket.on("connection", client => {
     });
     client.on("disconnecting", data => {
         client.broadcast.emit("userLeft", client.id);
+    });
+    client.on("disconnect", data => {
         users.forEach((user, id) => {
             if (user.id == client.id) {
-                users = users.splice(id, 1);
+                users.splice(id, 1);
             }
         });
-        console.log(users);
     });
 });
 console.log("Started Server");

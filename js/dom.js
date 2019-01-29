@@ -47,12 +47,12 @@ const addMessage = (message, sender) => {
 }
 
 const addUser = user => {
-    document.getElementById("peopleInChat").innerHTML += (`<div class='btn-floating center ${user.color}' id='${user.id}' title='${user.name}'><b>${user.name[0].toUpperCase()}</b></div>`);
+    document.getElementById("peopleInChat").innerHTML += (`<div class='btn-floating center ${user.color}' id='${user.id}' title='${user.id}'><b>${user.name[0].toUpperCase()}</b></div>`);
 }
 
 const removeUser = user => {
     document.getElementById("peopleInChat").removeChild(
-        document.getElementById(user.id)
+        document.getElementById(user)
     )
 }
 

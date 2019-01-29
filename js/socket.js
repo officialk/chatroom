@@ -31,7 +31,6 @@ const initChat = name => {
 
 const startEvents = () => {
     socket.on("userJoined", user => {
-        console.log(user);
         addUser(user);
     });
     //    socket.on("typing", user => {
