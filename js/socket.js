@@ -1,5 +1,5 @@
 //initializing stuff
-const link = "http://192.168.43.237:8000";
+const link = "http://192.168.137.1:8000";
 var socket, id;
 
 //start chat only if name is given

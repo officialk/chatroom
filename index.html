@@ -53,7 +53,7 @@
             <div class="container col s12 m12 l12 center">
                 <div class="input-field col s12 m12 l12 rounded mainColor">
                     <i class="material-icons prefix">chat</i>
-                    <input id="messageInput" type="text" placeholder="Send A Message..." onkeypress="startTyping()">
+                    <input id="messageInput" type="text" placeholder="Send A Message..." onkeypress="if(this.value.length==5){startTyping()}">
                     <label for="messageInput"></label>
                 </div>
             </div>

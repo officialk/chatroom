@@ -24,16 +24,19 @@ const initDomEvents = () => {
 //socket Related
 const sendMessage = () => {
     let content = document.getElementById("messageInput").value;
-    let message = {
-        "type": MESSAGE_TYPE,
-        "content": content,
-        "sender": userName,
-        "color": currentColor,
-        "number": messageCount++
+    if (content.length > 0 && content != "" && content != " ") {
+
+        let message = {
+            "type": MESSAGE_TYPE,
+            "content": content,
+            "sender": userName,
+            "color": currentColor,
+            "number": messageCount++
+        }
+        emit("message", message);
+        addMessage(message, "self");
+        document.getElementById("messageInput").value = "";
     }
-    emit("message", message);
-    addMessage(message, "self");
-    document.getElementById("messageInput").value = "";
 }
 
 const addMessage = (message, sender) => {

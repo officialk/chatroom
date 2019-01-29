@@ -39,12 +39,8 @@ socket.on("connection", client => {
         client.on("disconnect", data => {
             users.forEach((user, id) => {
                 if (user.id == client.id) {
+                    clients.splice(clients.indexOf(client.conn.remoteAddress), 1);
                     users.splice(id, 1);
-                }
-            });
-            clients.forEach((cl, id) => {
-                if (cl == client.conn.remoteAddress) {
-                    clients.splice(id, 1);
                 }
             });
         });
