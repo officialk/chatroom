@@ -76,14 +76,20 @@ const setName = name => {
 }
 
 const setColor = () => {
-    let colorList = ["cblue", "cgreen", "cred", "cyellow", "cpink", "cblack", "cvoilet"];
-    color = colorList[Math.floor(Math.random() * colorList.length)];
+    let color;
+    if (window.localStorage.getItem("color") != null) {
+        color = window.localStorage.getItem("color");
+    } else {
+        let colorList = ["cblue", "cgreen", "cred", "cyellow", "cpink", "cblack", "cvoilet"];
+        color = colorList[Math.floor(Math.random() * colorList.length)];
+    }
     var elems = document.getElementsByClassName("mainColor");
     for (var i = 0; i < elems.length; i++) {
         elems[i].classList.remove(currentColor);
         elems[i].className += " " + color;
     }
     currentColor = color;
+    window.localStorage.setItem("color", currentColor);
 }
 
 const setTitle = text => {
